@@ -1,3 +1,2 @@
-httplib2
--e git://github.com/franckcuny/fluffyurl.git#egg=fluffyurl
--e git://github.com/franckcuny/fluffyhttp.git#egg=http
+-e git://github.com/franckcuny/http.git#egg=http
+-e git://github.com/franckcuny/httpclient.git#egg=httpclient
