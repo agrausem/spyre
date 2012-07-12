@@ -64,11 +64,10 @@ class Spore(object):
         setattr(self, method_name, new_method)
         self._methods.append(method_name)
 
-    def enable_if(self, predicate, middleware, **kwargs):
-        pass
-
     def enable(self, middleware, **kwargs):
-        predicate = lambda req: True
+        self.enable_if(lambda req: True, middleware, **kwargs)
+
+    def enable_if(self, predicate, middleware, **kwargs):
         if type(middleware) is str:
             mw_class = self._import_middleware(middleware)
             self.middlewares.append((predicate, mw_class(**kwargs)))
