@@ -15,6 +15,11 @@
             "headers": {
               "content-type":":content_type"
             }
+        },
+        "get_info": {
+            "path": "/test",
+            "method": "GET",
+            "authentication": true
         }
     }
 }
