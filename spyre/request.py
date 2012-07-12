@@ -38,7 +38,8 @@ class Request(object):
         self.url.path.append(self.path)
         self._query_path()
         # TODO headers etc
-        request = http.Request(self.method, str(self.url))
+        request = http.Request(self.method, str(self.url),
+                headers=self.headers)
         return request
 
     def _build_url(self):
@@ -67,7 +68,8 @@ class Request(object):
 
         query = []
 #        form = {}
-#        headers = []
+        self.headers = self.env.get('spore.headers', None)
+
 
         for k, v in izip(params[::2], params[1::2]):
             if path_info:

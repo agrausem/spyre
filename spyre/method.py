@@ -1,6 +1,6 @@
 import __future__
 import re
-from http import Url
+from http import Url, Response
 from spyre import errors
 from spyre.request import Request
 
@@ -28,7 +28,7 @@ class Method(object):
         self.base_url = None
 
         self.required_payload = False
-        self.authentication = False
+        self.authentication = desc.get('authentication', False)
 
         self.formats = []
         self.headers = []
@@ -107,7 +107,7 @@ class Method(object):
             'QUERY_STRING': '',
             'HTTP_USER_AGENT': 'spyre',
             'spore.expected_status': self.expected_status,
-            'spore.authentication': auth,
+            'spore.authentication': self.authentication,
             'spore.params': params,
             'spore.payload': payload,
             'spore.errors': '',
@@ -120,6 +120,8 @@ class Method(object):
             if mw[0](env):
                 cb = mw[1](env)
                 if cb:
+                    if isinstance(cb, Response):
+                        return cb
                     cb_response.append(cb)
 
         request = Request(env)
