@@ -10,7 +10,7 @@ class TestSpyreMiddlewareFormatJSON(TestCase):
 
     def test_simple(self):
         spore = new_from_spec(spec)
-        spore.enable('formatjson')
+        spore.enable('format.Json')
         resp = spore.get_user_info(username='franckcuny')
         content = resp.content
         print content
