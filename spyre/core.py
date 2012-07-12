@@ -78,7 +78,11 @@ class Spore(object):
             raise ValueError(middleware)
 
     def _import_middleware(self, mw_name):
-            mw_package = "spyre.middleware.%s" % mw_name
-            mw_module = __import__(mw_package, fromlist=[mw_name])
-            mw_class = getattr(mw_module, mw_name)
-            return mw_class
+        split_mw_name = mw_name.split('.')
+        mw_class_name = split_mw_name.pop()
+        mw_package = "spyre.middleware"
+        if split_mw_name:
+            mw_package = '%s.%s' % (mw_package, '.'.join(split_mw_name))
+        mw_module = __import__(mw_package, fromlist=[mw_class_name])
+        mw_class = getattr(mw_module, mw_class_name)
+        return mw_class
