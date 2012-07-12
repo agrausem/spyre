@@ -57,6 +57,7 @@ class Request(object):
             self.url.query = query_string
 
     def _expand(self):
+        self.headers = self.env.get('spore.headers', None)
         params = self.env.get('spore.params', None)
 
         if params is None:
@@ -68,7 +69,6 @@ class Request(object):
 
         query = []
 #        form = {}
-        self.headers = self.env.get('spore.headers', None)
 
 
         for k, v in izip(params[::2], params[1::2]):

@@ -41,7 +41,7 @@ class TestSpyreMethod(TestCase):
         method = Method(method_name, method_desc, base_url=self.url, user_agent=self.user_agent)
         self.assertTrue(method)
         resp = method(username='franckcuny')
-        print resp.content
+        # print resp.content
         self.assertEqual(resp.status, 200)
 
     def test_optional_attr(self):

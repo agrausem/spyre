@@ -13,5 +13,5 @@ class TestSpyreMiddlewareFormatJSON(TestCase):
         spore.enable('format.Json')
         resp = spore.get_user_info(username='franckcuny')
         content = resp.content
-        print content
+        # print content
         self.assertEqual(content['name'], 'franck')

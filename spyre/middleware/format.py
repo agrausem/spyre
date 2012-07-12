@@ -3,7 +3,7 @@ from functools import partial
 import json
 
 
-class formatjson(Middleware):
+class Json(Middleware):
     def __init__(self, **kwargs):
         pass
 
