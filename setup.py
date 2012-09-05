@@ -7,5 +7,5 @@ from setuptools import setup
 setup(
     name = 'spyre',
     version = '0.1',
-    packages = 'spyre',
+    packages = ['spyre'],
 )
