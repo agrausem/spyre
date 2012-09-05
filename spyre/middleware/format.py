@@ -12,6 +12,4 @@ class Json(Middleware):
         return cb
 
     def response_cb(self, response):
-        import inspect
-        print 'caller name:', inspect.stack()[1][3]
         response.content = json.loads(response.content)
